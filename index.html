@@ -39,7 +39,7 @@
         </button>
 
         <ul class="nav-menu">
-          <li><a href="#about">About</a></li>
+          <li><a href="#about-me">About</a></li>
           <li><a href="#experiences">Experiences</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -53,7 +53,7 @@
     </header>
     <main>
       <!-- PAGE SECTIONS -->
-      <section class="container">
+      <section class="container" id="about-me">
         <h2 id="about-me-title">About Me</h2>
         <div id="about">
           <div class="about-me-image">
@@ -223,13 +223,170 @@
       </section>
 
       <section id="skills">
-        <h2>Services Section</h2>
-        <p>...</p>
+        <h2>Skills</h2>
+
+        <div class="skills-grid">
+          <!-- column 1 -->
+          <div class="skill-block">
+            <h3>Languages</h3>
+            <ul>
+              <li>C/C++</li>
+              <li>Python</li>
+              <li>x86-64&nbsp;Assembly</li>
+              <li>Verilog</li>
+              <li>Bash, PHP</li>
+              <li>JavaScript</li>
+              <li>HTML 5, CSS</li>
+              <li>MySQL</li>
+            </ul>
+          </div>
+
+          <!-- column 2 -->
+          <div class="skill-block">
+            <h3>Libraries&nbsp;&amp;&nbsp;Frameworks</h3>
+            <ul>
+              <li>React&nbsp;JS</li>
+              <li>Pandas</li>
+              <li>NumPy</li>
+              <li>Scikit-learn</li>
+              <li>BSD Sockets API</li>
+            </ul>
+          </div>
+
+          <!-- column 3 -->
+          <div class="skill-block">
+            <h3>Tools</h3>
+            <ul>
+              <li>Git/GitHub</li>
+              <li>Docker</li>
+              <li>VS&nbsp;Code</li>
+              <li>Linux</li>
+              <li>STM32CubeIDE</li>
+              <li>Arduino</li>
+              <li>OpenMP&nbsp;API</li>
+            </ul>
+          </div>
+
+          <!-- FULL‑WIDTH row (spans the grid) -->
+          <div class="skill-block concepts">
+            <h3>Software‑Engineering&nbsp;Concepts</h3>
+            <ul>
+              <li>Data Structures &amp; Algorithms</li>
+              <li>Object‑Oriented Design (OOD)</li>
+              <li>RESTful API design &amp; implementation</li>
+              <li>Test‑Driven Development (TDD)</li>
+              <li>Microservices architecture</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section id="projects">
-        <h2>Contact Section</h2>
-        <p>...</p>
+        <h2>Projects</h2>
+
+        <div class="projects-grid">
+          <article class="project">
+            <h3>DisCHORD</h3>
+            <p>
+              A collaborative web application designed to enable real-time
+              chatting and music streaming among users. This project leverages
+              the Spotify API and ChatGPT API to enhance user experience by
+              integrating a music streaming platform and streamlining the music
+              recommendation system.
+            </p>
+          </article>
+
+          <!-- Regular cards (auto‑flow across the grid) -->
+          <article class="project">
+            <h3>Pocket Racer</h3>
+            <p>
+              Building an autonomous miniature car equipped with integrated
+              sensors and cameras for navigating a track using computer vision.
+              Training data will be collected by driving the car around the
+              track, and a neural network will use this data to make navigation
+              decisions.
+            </p>
+          </article>
+
+          <article class="project">
+            <h3>Movie Recommender</h3>
+            <p>
+              Built a movie recommendation app in C++ that calibrated
+              recommendations using database records of watched movies and
+              generated a scoring system based on movie categories. Utilized
+              binary search trees to improve search efficiency.
+            </p>
+          </article>
+
+          <article class="project">
+            <h3>Automated Path-following Car</h3>
+            <p>
+              Designed an electric motor-driven car to navigate a track using an
+              optical sensor for line detection. Programmed Python in Arduino
+              for sensor fusion and implemented a PID control algorithm,
+              enabling the car to handle turnarounds, curves, track gaps, and
+              varying acceleration.
+            </p>
+          </article>
+
+          <article class="project">
+            <h3>Monitoring System for Electric Vehicle Charging</h3>
+            <p>
+              Developing a system to monitor EV charging over a prolonged
+              period. An INA219 sensor, which interfaces via I2C with a
+              Raspberry Pi, is used to monitor the current. The sensor data,
+              indicating the charging status, is displayed on an LCD.
+            </p>
+          </article>
+          <article class="project project--featured scripts">
+            <header class="scripts-header">
+              <!-- decorative inline‑SVG “code” icon -->
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  fill="currentColor"
+                  d="M8.17 6.17 6.75 7.59 10.16 11l-3.41 3.41 1.42 1.42L13 12 8.17 6.17Zm7.66 11.66L17.25 16.4 13.84 13l3.41-3.41-1.42-1.42L11 12l4.83 5.83Z"
+                />
+              </svg>
+              <h3>Scripts</h3>
+            </header>
+
+            <ul class="script-list">
+              <li>
+                <strong>Cheapest Flights Web Scraper</strong>
+                <p>
+                  A Python script that scrapes the cheapest flights from Expedia
+                  and automatically emails the results in a pandas DataFrame.
+                </p>
+                <a
+                  href="https://github.com/mateusbehrend/Cheapest_Flights_Webscraper"
+                  target="_blank"
+                  >View repo ↗</a
+                >
+              </li>
+
+              <li>
+                <strong>College Basketball Points Predictor</strong>
+                <p>
+                  Automatically scrapes web data for an inputted college
+                  basketball player, stores the information in a CSV file, and
+                  compares it against KenPom advanced metrics. The data is then
+                  fed into a decision tree model to predict the player's points
+                  in the next game.
+                </p>
+                <a
+                  href="https://github.com/mateusbehrend/CBB_Points_Predictor"
+                  target="_blank"
+                  >View repo ↗</a
+                >
+              </li>
+            </ul>
+          </article>
+        </div>
       </section>
       <section id="resume">
         <h2>Resume Section</h2>
