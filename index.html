@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal website" />
+    <title>Mateus Behrend -- Personal Page</title>
+    <link rel="icon" href="images/favicon_white.ico" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <!-- Replace with your logo image or text -->
+          <img src="images/logo.png" alt="My Logo" />
+        </a>
+
+        <!-- hamburger toggle button (visible on mobile) -->
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span class="hamburger"></span>
+        </button>
+
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">Experiences</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <span id="theme-toggle" aria-label="Toggle theme">
+          <img src="images/sun.png" />
+        </span>
+      </nav>
+      <h1>Hello. <span id="titleName"> I'm Mateus Behrend.</span></h1>
+    </header>
+    <main>
+      <!-- PAGE SECTIONS -->
+      <section id="home">
+        <h2>Home Section</h2>
+        <p>
+          Welcome to my personal website! Here, you can find information about
+          my experiences, services, and how to contact me.
+        </p>
+      </section>
+
+      <section id="experiences">
+        <h2>Experiences</h2>
+        <ul class="experience">
+          <!-- Company 1 -->
+          <li>
+            <h3>Sandia National Laboratories</h3>
+            <ul>
+              <!-- Role 1 -->
+              <li>
+                R&amp;D Computer Engineering Intern
+                <span class="date">
+                  (Year-round, Remote: Sep 2024 - Present)
+                </span>
+                <ul>
+                  <li>
+                    Providing engineering and programming support in research
+                    and analysis: performing signal processing of
+                    electromagnetic waves and analyzing data spectrograms using
+                    a machine learning algorithm.
+                  </li>
+                  <li>
+                    Fixed a garbage collection bug, preventing over-consumption
+                    of RAM. This eliminated crashes and allowed for seemless
+                    runs.
+                  </li>
+                </ul>
+              </li>
+              <!-- Role 2 -->
+              <li>
+                R&amp;D Computer Engineering Intern
+                <span class="date">(Summer, Onsite: Jun 2024 - Aug 2024)</span>
+                <ul>
+                  <li>
+                    Assisted in the migration of a machine learning analysis
+                    program, including troubleshooting/documenting setup,
+                    writing a Python installer script, and extending the code
+                    with an HDF5 reader.
+                  </li>
+                  <li>
+                    Evaluated electromagnetic-wave analysis systems; created
+                    configuration files for system metadata.
+                  </li>
+                  <li>
+                    Developed bash scripts that created batch jobs, streamlining
+                    execution on HPC machines.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <!-- Company 2 -->
+          <li>
+            <h3>Axiom Analytics</h3>
+            <span class="date">(Aug 2024- Present)</span>
+            <ul>
+              <li>
+                Associate Backend Software Developer
+                <span class="date">(Part-time, Remote)</span>
+                <ul>
+                  <li>
+                    Optimized application performance, managed databases, and
+                    troubleshot backend software for an accounting firm
+                    platform.
+                  </li>
+                  <li>
+                    Developed a server-side UI to let non-developers run Python
+                    scripts without the CLI, improving accessibility.
+                  </li>
+                  <li>
+                    Worked with both production and Dockerized local databases.
+                  </li>
+                  <li>
+                    Wrote a Python script to fetch closed purchase
+                    orders—speeding the accounting algorithm by ~2000%.
+                  </li>
+                  <li>
+                    Fixed a Python bug in the encumbrances script, improving
+                    user account access.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section id="services">
+        <h2>Services Section</h2>
+        <p>...</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Section</h2>
+        <p>...</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2025 Mateus Behrend</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

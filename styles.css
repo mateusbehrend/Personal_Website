@@ -1,0 +1,382 @@
+:root {
+  --bg-color: #ffffff; /* pure white */
+  --surface-color: #f4f6f8; /* very light gray */
+  --text-color: #212529; /* nearly black */
+  --muted-color: #6c757d; /* gray for secondary text */
+  --accent-color: #007acc; /* bright blue */
+  --accent-hover: #3d57ef; /* darker blue on hover */
+  --accent-color-hover: #7c8ef3a0;
+
+  /* Typography */
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Courier New", monospace;
+  --fs-base: 1rem; /* 16px */
+  --lh-base: 1.5;
+
+  /* Spacing */
+  --space-unit: 1rem; /* 16px */
+
+  /* Layout */
+  --max-width: 1200px;
+
+  --primary-grad: linear-gradient(
+    90deg,
+    #b94963 0%,
+    #9d49b0b1 50%,
+    #ff914d 100%
+  );
+  --bg-grad: linear-gradient(135deg, #766a6a 0%, #7a4e32 100%);
+  --bg-grad-2: linear-gradient(135deg, #6c80ee 0%, #3c54efd6 100%);
+  --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: "merriweather", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Mirror the dark overrides */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --link-color: #66afff;
+  }
+}
+html[data-theme="dark"] {
+  --bg-color: #1e1c1c; /* very dark gray */
+  --surface-color: #1f1f1f; /* dark gray surfaces */
+  --text-color: #e0e0e0; /* off‑white text */
+  --muted-color: #bfb8b8; /* mid‑gray for secondary text */
+  --accent-color: #4dabf7; /* lighter, more vibrant blue */
+  --accent-hover: #3d57ef; /* even brighter on hover */
+  --accent-color-hover: #3d57ef;
+  --text-shadow: 2px 2px 4px rgba(246, 246, 246, 0.081);
+}
+html[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --link-color: #007acc;
+}
+
+h1 {
+  align-items: center;
+  justify-content: center;
+  min-height: 10vh; /* almost full‑screen */
+  padding: 2rem;
+  text-align: center;
+  overflow: hidden;
+  font-size: clamp(1.25rem, 6vw, 2.5rem);
+  line-height: 1.1;
+
+  background: var(--text-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: var(--text-shadow);
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-style: oblique 30deg;
+  font-variant: small-caps;
+  font-weight: 550;
+}
+
+#titleName {
+  font-size: clamp(1.25rem, 6vw, 2.5rem);
+  line-height: 1.1;
+  background: var(--bg-grad-2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html {
+  font-size: var(--fs-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  box-shadow: var(--text-shadow);
+  font-family: "Montserrat", sans-serif;
+  font-style: oblique 10deg;
+  font-variant-caps: all-small-caps;
+  font-weight: 500;
+}
+
+html[data-theme="dark"] .navbar .logo img {
+  filter: brightness(0) invert(1);
+}
+
+.navbar .logo img {
+  height: clamp(32px, 3vw, 44px);
+  width: auto; /* preserve aspect ratio */
+  display: block; /* remove inline‑img descender gap */
+}
+
+/* Nav menu */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  padding-right: 1.15rem;
+  margin-left: auto;
+}
+
+.nav-menu li + li {
+  margin-left: clamp(0.75rem, 1.5vw, 1.75rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--nav-color), #333;
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  position: relative;
+  padding: 0.5rem 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background-color: var(--accent-color-hover, #005f9e);
+  border-radius: 0.25rem;
+}
+
+#theme-toggle img {
+  height: clamp(32px, 3vw, 44px);
+  width: auto; /* preserve aspect ratio */
+  display: block; /* remove inline‑img descender gap */
+  cursor: pointer;
+  width: auto;
+}
+
+html[data-theme="dark"] #theme-toggle img {
+  filter: brightness(0) invert(1);
+}
+
+html[data-theme="light"] #theme-toggle img {
+  filter: none;
+}
+
+#experiences {
+  padding-left: 1rem; /* smaller left gutter */
+  padding-right: 2rem; /* keep your right gutter as before */
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 4vw, 1.75rem);
+}
+
+/* 1) Base resets for nested lists */
+.experience {
+  margin: 0;
+  padding: 0;
+}
+
+.experience ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2) Section heading */
+#experiences h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--link-color);
+  display: inline-block;
+}
+
+li > h3 {
+  display: inline-block; /* so margin/padding works predictably */
+  font-family: "Montserrat", sans-serif; /* or any display font you like */
+  font-size: clamp(1.25rem, 4vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--muted-color);
+  padding-left: 0.25rem;
+  margin-inline-start: -0.5rem;
+}
+
+.experience > li {
+  list-style-position: inside;
+  padding-inline-start: clamp(0.5rem, 3vw, 1rem);
+}
+.experience > li::marker {
+  content: ""; /* hides the marker */
+}
+
+.experience {
+  list-style-type: disc;
+}
+
+/* 4) Second‑level: Roles */
+.experience > li > ul > li {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  font-weight: 600;
+}
+/* Custom marker: subtle disc */
+.experience > li > ul > li::marker {
+  content: "● ";
+  color: var(--muted-color);
+  font-size: 1.2em;
+}
+
+/* 5) Date styling */
+.experience .date {
+  font-style: italic;
+  color: var(--muted-color);
+  font-size: 0.9em;
+  margin-left: 0.5rem;
+}
+
+/* 6) Third‑level: Responsibilities */
+.experience li li > ul > li {
+  margin: 0.5rem 0;
+  padding-left: 1rem;
+  position: relative;
+  font-weight: normal;
+  color: var(--text-color);
+  line-height: 1.4;
+}
+/* Custom marker: arrow */
+.experience li li > ul > li::marker {
+  content: "➤ ";
+  color: var(--link-color);
+  font-size: 0.85em;
+}
+
+/* 7) Responsive gutters */
+@media (max-width: 600px) {
+  .experience > li {
+    padding-left: 1rem;
+  }
+  .experience > li > ul > li {
+    padding-left: 1rem;
+  }
+  .experience li li > ul > li {
+    padding-left: 0.75rem;
+  }
+}
+
+/* 3. Hamburger (hidden by default) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle .hamburger,
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: var(--color-text, #333);
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.nav-toggle .hamburger::before,
+.nav-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle .hamburger::before {
+  top: -8px;
+}
+
+.nav-toggle .hamburger::after {
+  top: 8px;
+}
+
+@media (max-width: 768px) {
+}
+/* 4. Mobile styles */
+@media (max-width: 550px) {
+  .navbar {
+    justify-content: flex-start;
+  }
+  /* show hamburger */
+  .nav-toggle {
+    display: block;
+    margin-left: 1rem;
+  }
+  .navbar > * {
+    order: 0;
+  }
+  .navbar .logo {
+    order: 1;
+  }
+  #theme-toggle {
+    order: 2;
+    margin-left: auto;
+  }
+  .nav-toggle {
+    order: 3;
+    margin-left: 1rem; /* space from sun */
+    color: var(--text-color);
+  }
+  /* hide menu by default */
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: color-mix(
+      in srgb,
+      var(--bg-color) 92%,
+      var(--text-color) 8%
+    );
+    backdrop-filter: blur(4px);
+    flex-direction: column;
+    width: clamp(100px, 60vw, 200px);
+    padding: 1rem;
+    box-shadow: var(--text-shadow);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-menu li + li {
+    margin: 1rem 0 0;
+  }
+
+  /* when active, slide in */
+  .nav-menu.active {
+    transform: translateX(0);
+  }
+  /* Creating animation to x  */
+  .nav-toggle.open .hamburger {
+    transform: rotate(45deg);
+  }
+  .nav-toggle.open .hamburger::before {
+    transform: rotate(90deg) translateX(8px);
+  }
+  .nav-toggle.open .hamburger::after {
+    opacity: 0;
+  }
+  .nav-toggle .hamburger,
+  .nav-toggle .hamburger::before,
+  .nav-toggle .hamburger::after {
+    background-color: currentColor;
+  }
+}
