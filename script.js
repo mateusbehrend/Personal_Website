@@ -33,3 +33,10 @@ toggle.addEventListener("click", () => {
     img.src = "moon.png";
   }
 });
+
+// JS for the feeback form rating
+const r = document.getElementById("fb-rating");
+r.addEventListener(
+  "input",
+  () => (document.getElementById("ratingValue").textContent = r.value)
+);

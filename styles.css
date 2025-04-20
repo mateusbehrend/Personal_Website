@@ -29,6 +29,9 @@
   --bg-grad-2: linear-gradient(135deg, #6c80ee 0%, #3c54efd6 100%);
   --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   font-family: "merriweather", sans-serif;
+  --form-border: #c5cbd3; /* neutral gray for inputs */
+  --form-bg: #f9fafb; /* very light backdrop */
+  --form-radius: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,14 +43,16 @@
   }
 }
 html[data-theme="dark"] {
-  --bg-color: #1e1c1c; /* very dark gray */
-  --surface-color: #1f1f1f; /* dark gray surfaces */
-  --text-color: #e0e0e0; /* off‑white text */
-  --muted-color: #bfb8b8; /* mid‑gray for secondary text */
-  --accent-color: #4dabf7; /* lighter, more vibrant blue */
-  --accent-hover: #3d57ef; /* even brighter on hover */
+  --bg-color: #1e1c1c;
+  --surface-color: #1f1f1f;
+  --text-color: #e0e0e0;
+  --muted-color: #bfb8b8;
+  --accent-color: #4dabf7;
+  --accent-hover: #3d57ef;
   --accent-color-hover: #3d57ef;
   --text-shadow: 2px 2px 4px rgba(246, 246, 246, 0.081);
+  --form-border: #495057;
+  --form-bg: #26282b;
 }
 html[data-theme="light"] {
   --bg-color: #ffffff;
@@ -99,6 +104,18 @@ body {
   height: 100%;
   background-color: var(--bg-color);
   color: var(--text-color);
+  overflow-x: hidden;
+}
+
+section > h2 {
+  margin-left: clamp(1rem, 4vw, 1.75rem);
+
+  /* everything else you were already using… */
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--link-color);
+  display: inline-block;
 }
 
 .navbar {
@@ -212,9 +229,13 @@ html[data-theme="light"] #theme-toggle img {
   width: clamp(50px, 30vw, 500px);
 }
 
-#about > h2 {
-  flex: 0 0 100%; /* no grow/shrink, take 100% of row */
-  margin: 0 0 var(--space-unit);
+#about-me-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--link-color);
+  display: inline-block;
+  margin-bottom: 4rem;
 }
 
 /* 3) Text column (flexible) */
@@ -366,7 +387,7 @@ html[data-theme="light"] #theme-toggle img {
   color: #ff5500;
 }
 
-#experiences {
+#experiences > *:not(h2) {
   padding-left: 1rem; /* smaller left gutter */
   padding-right: 2rem; /* keep your right gutter as before */
   box-sizing: border-box;
@@ -378,13 +399,16 @@ html[data-theme="light"] #theme-toggle img {
   box-sizing: border-box;
 }
 
-/* 2. Heading style matches Experiences */
 #about h2 {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(1.75rem, 5vw, 2.5rem);
   margin-bottom: 1rem;
   border-bottom: 2px solid var(--link-color);
   display: inline-block;
+}
+
+a[href*="google"] {
+  text-decoration: underline dotted;
 }
 
 /* Experience Section */
@@ -437,7 +461,7 @@ li > h3 {
   position: relative;
   font-weight: 600;
 }
-/* customize marker */
+
 .experience > li > ul > li::marker {
   content: "● ";
   color: var(--muted-color);
@@ -478,7 +502,7 @@ li > h3 {
   }
 }
 
-/* 3. Hamburger (hidden by default) */
+/* Hamburger icon for navbar (hidden by default) */
 .nav-toggle {
   display: none;
   background: none;
@@ -534,10 +558,9 @@ li > h3 {
   }
   .nav-toggle {
     order: 3;
-    margin-left: 1rem; /* space from sun */
+    margin-left: 1rem;
     color: var(--text-color);
   }
-  /* hide menu by default */
   .nav-menu {
     position: absolute;
     top: 100%;
@@ -560,11 +583,9 @@ li > h3 {
     margin: 1rem 0 0;
   }
 
-  /* when active, slide in */
   .nav-menu.active {
     transform: translateX(0);
   }
-  /* Creating animation to x  */
   .nav-toggle.open .hamburger {
     transform: rotate(45deg);
   }
@@ -581,12 +602,6 @@ li > h3 {
   }
 }
 
-#resume {
-  padding-inline: clamp(1rem, 4vw, 1.75rem);
-  box-sizing: border-box;
-  margin-top: 2rem;
-}
-
 #resume h2 {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -595,21 +610,25 @@ li > h3 {
   display: inline-block;
 }
 
-.resume-container {
-  position: relative;
+#resume p {
+  margin-left: 2rem;
+}
+
+#resume embed {
+  padding-inline: clamp(1rem, 4vw, 1.75rem);
+  box-sizing: border-box;
+  margin-top: 2rem;
+  height: 80vh;
+  border: none;
+  display: block;
+  max-width: 100%;
+  overflow-x: hidden;
   width: 100%;
-  max-width: 1000px;
+  max-width: 90%;
   margin: 0 auto;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
   border-radius: 12px;
-  overflow: hidden;
-}
-
-.resume-container iframe {
-  width: 100%;
-  height: 80vh;
-  border: none;
-  background-color: var(--surface-color);
+  box-sizing: border-box;
 }
 
 #resume a {
@@ -628,4 +647,112 @@ li > h3 {
   color: #b00000;
   background: #ffdddd;
   border-radius: 4px;
+}
+
+@media (max-width: 450px) {
+  #resume embed {
+    display: none;
+  }
+}
+
+.feedback-form {
+  max-width: 600px; /* stops it from hitting the edge */
+  margin: 2rem auto; /* centers & adds vertical space */
+  padding-inline: clamp(1rem, 4vw, 2rem);
+}
+
+.feedback-form fieldset {
+  border: 2px solid var(--accent-color);
+  border-radius: var(--form-radius);
+  padding: 1.5rem; /* keeps inputs off the edges */
+  background: var(--form-bg);
+}
+
+.feedback-form legend {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0 0.5rem;
+  color: var(--accent-color);
+}
+
+/*  using CSS grid for form layout */
+.feedback-grid {
+  display: grid;
+  gap: 1rem 1.25rem;
+  grid-template-columns: 1fr 1fr;
+  padding-inline: 0.75rem;
+}
+
+/* make the long “comments” area span full width */
+.feedback-grid textarea {
+  grid-column: 1 / -1;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  width: 90%;
+  font: inherit;
+  padding: 0.55rem 0.75rem;
+  border: 2px solid var(--form-border);
+  border-radius: var(--form-radius);
+  background: transparent;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+  color: var(--text-color);
+  margin-inline: 0.5rem;
+}
+
+/* slider inherits accent colour */
+.feedback-form input[type="range"] {
+  accent-color: var(--accent-color);
+}
+
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+/* ---- live HTML‑5 validation feedback ---- */
+
+.feedback-form input:not(:placeholder-shown):invalid,
+.feedback-form textarea:not(:placeholder-shown):invalid {
+  border-color: #d00000; /* red */
+}
+.feedback-form input:not(:placeholder-shown):valid,
+.feedback-form textarea:not(:placeholder-shown):valid {
+  border-color: #2e9d3d; /* green */
+}
+
+.feedback-form button[type="submit"] {
+  grid-column: 1 / -1; /* spans full width */
+  padding: 0.75rem 1.25rem;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent-color);
+  border: none;
+  border-radius: var(--form-radius);
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.feedback-form button:hover {
+  background: var(--accent-hover);
+}
+
+/* ---------- SMALL‑SCREEN TWEAK ---------- */
+@media (max-width: 480px) {
+  .feedback-grid {
+    grid-template-columns: 1fr; /* single column */
+  }
+}
+
+#feedback h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--link-color);
+  display: inline-block;
 }
