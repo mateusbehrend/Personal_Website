@@ -8,16 +8,26 @@ navToggle.addEventListener("click", () => {
   navToggle.classList.toggle("open");
 });
 
-// Toggle between light and dark mode
-
 const toggle = document.getElementById("theme-toggle");
 const root = document.documentElement;
 
 const saved = localStorage.getItem("theme");
+const img = toggle.querySelector("img");
 if (saved) {
+  console.log("Saved theme:", saved);
   root.setAttribute("data-theme", saved);
+  if (saved === "dark") {
+    img.src = "sun.png";
+  }
+  if (saved === "light") {
+    img.src = "moon.png";
+  }
 } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
   root.setAttribute("data-theme", "dark");
+  img.src = "moon.png";
+} else {
+  root.setAttribute("data-theme", "light");
+  img.src = "sun.png";
 }
 
 toggle.addEventListener("click", () => {
@@ -25,7 +35,6 @@ toggle.addEventListener("click", () => {
   // console.log("Switching theme to", next);
   root.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
-  const img = toggle.querySelector("img");
   if (next === "dark") {
     img.src = "sun.png";
   }
