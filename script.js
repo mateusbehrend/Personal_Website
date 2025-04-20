@@ -24,10 +24,10 @@ if (saved) {
   }
 } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
   root.setAttribute("data-theme", "dark");
-  img.src = "moon.png";
+  img.src = "sun.png";
 } else {
   root.setAttribute("data-theme", "light");
-  img.src = "sun.png";
+  img.src = "moon.png";
 }
 
 toggle.addEventListener("click", () => {
