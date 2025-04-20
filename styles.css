@@ -209,7 +209,7 @@ html[data-theme="light"] #theme-toggle img {
 }
 
 #about .about-me-image img {
-  max-width: 500px;
+  width: clamp(50px, 30vw, 500px);
 }
 
 #about > h2 {
@@ -228,11 +228,12 @@ html[data-theme="light"] #theme-toggle img {
 }
 
 #about .about-me-image {
-  flex: 0 0 475px;
+  flex: 0 0 auto;
+  width: fit-content;
 }
 .about-me-image {
   position: relative;
-  display: inline‑block; /* shrink‑wrap to the img */
+  display: inline-block; /* shrink‑wrap to the img */
 }
 
 /* 2) Create the gradient “shadow” */
@@ -256,7 +257,7 @@ html[data-theme="light"] #theme-toggle img {
 #about .about-me-image img {
   display: block;
   width: 100%;
-  max-width: 475px;
+  max-width: 500px;
   height: auto;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -266,7 +267,7 @@ html[data-theme="light"] #theme-toggle img {
   border-radius: 50%;
 }
 
-/* 6) Stack everything on mobile */
+/* Stack everything on mobile-- compatibility with smaller width devices */
 @media (max-width: 600px) {
   #about {
     flex-direction: column;
@@ -276,8 +277,93 @@ html[data-theme="light"] #theme-toggle img {
     margin-bottom: var(--space-unit);
   }
   #about .about-me-image {
-    margin-top: var(--space-unit);
+    margin: var(--space-unit) auto 0;
   }
+}
+
+.links .social-links,
+.links .social-links li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.links .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2.75rem;
+}
+
+.links {
+  display: flex;
+  flex-direction: column; /* stack ↓  icons then text */
+  align-items: center; /* push both rows to the right edge */
+  gap: 0.7rem; /* space between the two rows */
+}
+
+/* keep icon row as an inline list (no bullets) */
+.links .social-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  margin-inline-end: clamp(0.75rem, 4vw, 2rem);
+}
+
+/* text‑link row simply follows your earlier styles */
+.links .text-links {
+  margin: 0;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  text-align: right; /* keep pipes snug‑right, too */
+}
+
+.links .social-links a img {
+  width: clamp(30px, 5vw, 55px);
+  height: clamp(30px, 5vw, 55px);
+  object-fit: contain;
+  display: block; /* removes descender gap */
+  border-radius: 8px; /* optional rounding */
+  transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+  opacity: 0.85;
+}
+
+/* hover state */
+.links .social-links a:hover img {
+  transform: scale(1.1);
+  opacity: 1;
+  filter: none;
+}
+.links .social-links {
+  padding-inline-start: clamp(1.5rem, 5vw, 3.5rem);
+}
+.links .text-links {
+  text-align: center;
+  margin-top: var(--space-unit);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.links .text-links a {
+  color: var(--accent-color);
+  text-decoration: none;
+  padding: 0.2em 0.4em;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.links .text-links a:visited {
+  color: #b00000;
+  background: #ffdddd;
+  border-radius: 4px;
+}
+/* Hover style: underline and swap to hover accent */
+.links .text-links a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  background-color: rgba(0, 122, 204, 0.1);
+  border-radius: 4px;
+}
+.links .text-links a:active {
+  color: #ff5500;
 }
 
 #experiences {
@@ -493,4 +579,53 @@ li > h3 {
   .nav-toggle .hamburger::after {
     background-color: currentColor;
   }
+}
+
+#resume {
+  padding-inline: clamp(1rem, 4vw, 1.75rem);
+  box-sizing: border-box;
+  margin-top: 2rem;
+}
+
+#resume h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--link-color);
+  display: inline-block;
+}
+
+.resume-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.resume-container iframe {
+  width: 100%;
+  height: 80vh;
+  border: none;
+  background-color: var(--surface-color);
+}
+
+#resume a {
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+#resume a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  background-color: rgba(0, 122, 204, 0.1);
+  border-radius: 4px;
+}
+
+#resume a:visited {
+  color: #b00000;
+  background: #ffdddd;
+  border-radius: 4px;
 }
