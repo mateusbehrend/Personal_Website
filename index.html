@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Personal website" />
     <title>Mateus Behrend -- Personal Page</title>
-    <link rel="icon" href="images/favicon_white.ico" />
+    <link rel="icon" href="favicon.ico" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,8 +30,7 @@
     <header>
       <nav class="navbar">
         <a href="#" class="logo">
-          <!-- Replace with your logo image or text -->
-          <img src="images/logo.png" alt="My Logo" />
+          <img src="logo.png" alt="My Logo" />
         </a>
 
         <!-- hamburger toggle button (visible on mobile) -->
@@ -40,25 +39,57 @@
         </button>
 
         <ul class="nav-menu">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">Experiences</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experiences">Experiences</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#resume">Resume</a></li>
         </ul>
         <span id="theme-toggle" aria-label="Toggle theme">
-          <img src="images/sun.png" />
+          <img src="sun.png" alt="Toggle for light mode" />
         </span>
       </nav>
-      <h1>Hello. <span id="titleName"> I'm Mateus Behrend.</span></h1>
+      <h1 id="home">Hello. <span id="titleName"> I'm Mateus Behrend.</span></h1>
     </header>
     <main>
       <!-- PAGE SECTIONS -->
-      <section id="home">
-        <h2>Home Section</h2>
-        <p>
-          Welcome to my personal website! Here, you can find information about
-          my experiences, services, and how to contact me.
-        </p>
+      <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-me-image">
+          <img
+            src="pic.png"
+            alt="Mateus Behrend Profile Picture"
+            width="500px"
+          />
+        </div>
+        <div class="about-me-text">
+          <p>
+            Hello! I'm Mateus Behrend, a Computer Engineering student at UCLA
+            passionate about software development, embedded systems programming,
+            algorithms, and ultimately turning ideas into reality. Currently I’m
+            interning at Sandia National Laboratories (R&amp;D Computer
+            Engineering) and working part‑time as a Backend Developer at Axiom
+            Analytics. I will be working at 3D System as an Embedded Software
+            Engineer in the summer of 2025.
+          </p>
+          <p>My other hobbies include:</p>
+          <ul>
+            <li>
+              Rock Climbing
+              <span>&lpar;new hobby, started about a year ago&rpar;</span>
+            </li>
+            <li>
+              Basketball
+              <span
+                >&lpar;have been playing competitively since I was
+                10&rpar;</span
+              >
+            </li>
+            <li>
+              Being adventurous: traveling new places, trying new foods, etc.
+            </li>
+          </ul>
+        </div>
       </section>
 
       <section id="experiences">
@@ -148,13 +179,17 @@
         </ul>
       </section>
 
-      <section id="services">
+      <section id="skills">
         <h2>Services Section</h2>
         <p>...</p>
       </section>
 
-      <section id="contact">
+      <section id="projects">
         <h2>Contact Section</h2>
+        <p>...</p>
+      </section>
+      <section id="resume">
+        <h2>Resume Section</h2>
         <p>...</p>
       </section>
     </main>

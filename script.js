@@ -27,9 +27,9 @@ toggle.addEventListener("click", () => {
   localStorage.setItem("theme", next);
   const img = toggle.querySelector("img");
   if (next === "dark") {
-    img.src = "images/sun.png";
+    img.src = "sun.png";
   }
   if (next === "light") {
-    img.src = "images/moon.png";
+    img.src = "moon.png";
   }
 });

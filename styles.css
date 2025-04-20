@@ -76,6 +76,7 @@ h1 {
   font-style: oblique 30deg;
   font-variant: small-caps;
   font-weight: 550;
+  margin-top: 5rem;
 }
 
 #titleName {
@@ -135,10 +136,17 @@ html[data-theme="dark"] .navbar .logo img {
   list-style: none;
   padding-right: 1.15rem;
   margin-left: auto;
+
+  display: flex;
+  list-style: none;
+  margin-left: auto;
+  padding-right: 1.15rem;
+
+  /* responsive spacing between items */
+  gap: clamp(0.1rem, 0.75vw, 1rem);
 }
 
 .nav-menu li + li {
-  margin-left: clamp(0.75rem, 1.5vw, 1.75rem);
   font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -173,6 +181,105 @@ html[data-theme="light"] #theme-toggle img {
   filter: none;
 }
 
+#about {
+  scroll-margin-top: 5.4rem;
+}
+
+#home,
+#experiences,
+#skills,
+#projects,
+#resume {
+  scroll-margin-top: 4rem;
+}
+
+#about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-inline: clamp(1rem, 4vw, 1.75rem);
+  box-sizing: border-box;
+}
+
+#about .about-me-text p,
+#about .about-me-text ul li {
+  /* was 1rem–1.125rem; now bigger */
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.6;
+}
+
+#about .about-me-image img {
+  max-width: 500px;
+}
+
+#about > h2 {
+  flex: 0 0 100%; /* no grow/shrink, take 100% of row */
+  margin: 0 0 var(--space-unit);
+}
+
+/* 3) Text column (flexible) */
+#about .about-me-text {
+  flex: 1 1 300px; /* will grow to fill, shrink below 300px */
+}
+
+#about .about-me-text span {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+#about .about-me-image {
+  flex: 0 0 475px;
+}
+.about-me-image {
+  position: relative;
+  display: inline‑block; /* shrink‑wrap to the img */
+}
+
+/* 2) Create the gradient “shadow” */
+.about-me-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 80%;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+
+  /* make it slightly bigger than the img */
+  transform: scale(1.03);
+  filter: blur(4px);
+  z-index: -1; /* sit behind the image */
+  opacity: 0.75; /* soften the glow */
+}
+
+#about .about-me-image img {
+  display: block;
+  width: 100%;
+  max-width: 475px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+  /* make room for the “border” */
+  border: 6px solid transparent;
+  border-radius: 50%;
+}
+
+/* 6) Stack everything on mobile */
+@media (max-width: 600px) {
+  #about {
+    flex-direction: column;
+    text-align: center;
+  }
+  #about > h2 {
+    margin-bottom: var(--space-unit);
+  }
+  #about .about-me-image {
+    margin-top: var(--space-unit);
+  }
+}
+
 #experiences {
   padding-left: 1rem; /* smaller left gutter */
   padding-right: 2rem; /* keep your right gutter as before */
@@ -180,7 +287,21 @@ html[data-theme="light"] #theme-toggle img {
   padding-inline: clamp(1rem, 4vw, 1.75rem);
 }
 
-/* 1) Base resets for nested lists */
+#about.container {
+  padding-inline: clamp(1rem, 4vw, 1.75rem);
+  box-sizing: border-box;
+}
+
+/* 2. Heading style matches Experiences */
+#about h2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--link-color);
+  display: inline-block;
+}
+
+/* Experience Section */
 .experience {
   margin: 0;
   padding: 0;
@@ -192,7 +313,6 @@ html[data-theme="light"] #theme-toggle img {
   padding: 0;
 }
 
-/* 2) Section heading */
 #experiences h2 {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -202,8 +322,8 @@ html[data-theme="light"] #theme-toggle img {
 }
 
 li > h3 {
-  display: inline-block; /* so margin/padding works predictably */
-  font-family: "Montserrat", sans-serif; /* or any display font you like */
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
   font-size: clamp(1.25rem, 4vw, 1.5rem);
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -225,21 +345,19 @@ li > h3 {
   list-style-type: disc;
 }
 
-/* 4) Second‑level: Roles */
 .experience > li > ul > li {
   margin: 0.75rem 0;
   padding-left: 1.25rem;
   position: relative;
   font-weight: 600;
 }
-/* Custom marker: subtle disc */
+/* customize marker */
 .experience > li > ul > li::marker {
   content: "● ";
   color: var(--muted-color);
   font-size: 1.2em;
 }
 
-/* 5) Date styling */
 .experience .date {
   font-style: italic;
   color: var(--muted-color);
@@ -247,7 +365,6 @@ li > h3 {
   margin-left: 0.5rem;
 }
 
-/* 6) Third‑level: Responsibilities */
 .experience li li > ul > li {
   margin: 0.5rem 0;
   padding-left: 1rem;
@@ -263,7 +380,6 @@ li > h3 {
   font-size: 0.85em;
 }
 
-/* 7) Responsive gutters */
 @media (max-width: 600px) {
   .experience > li {
     padding-left: 1rem;
@@ -310,10 +426,8 @@ li > h3 {
   top: 8px;
 }
 
-@media (max-width: 768px) {
-}
 /* 4. Mobile styles */
-@media (max-width: 550px) {
+@media (max-width: 585px) {
   .navbar {
     justify-content: flex-start;
   }
