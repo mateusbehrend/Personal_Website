@@ -1,22 +1,19 @@
 :root {
-  --bg-color: #ffffff; /* pure white */
-  --surface-color: #f4f6f8; /* very light gray */
-  --text-color: #212529; /* nearly black */
-  --muted-color: #6c757d; /* gray for secondary text */
-  --accent-color: #007acc; /* bright blue */
-  --accent-hover: #3d57ef; /* darker blue on hover */
+  /* Color palette for light mode */
+  --bg-color: #ffffff;
+  --surface-color: #f4f6f8;
+  --text-color: #212529;
+  --muted-color: #6c757d;
+  --accent-color: #007acc;
+  --accent-hover: #3d57ef;
   --accent-color-hover: #7c8ef3a0;
 
-  /* Typography */
   --font-sans: "Helvetica Neue", Arial, sans-serif;
   --font-mono: "Courier New", monospace;
   --fs-base: 1rem; /* 16px */
   --lh-base: 1.5;
 
-  /* Spacing */
   --space-unit: 1rem; /* 16px */
-
-  /* Layout */
   --max-width: 1200px;
 
   --primary-grad: linear-gradient(
@@ -29,9 +26,15 @@
   --bg-grad-2: linear-gradient(135deg, #6c80ee 0%, #3c54efd6 100%);
   --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   font-family: "merriweather", sans-serif;
-  --form-border: #c5cbd3; /* neutral gray for inputs */
-  --form-bg: #f9fafb; /* very light backdrop */
+  --form-border: #c5cbd3;
+  --form-bg: #f9fafb;
   --form-radius: 8px;
+  --link-color: #66afff;
+  --visited-color: #953030;
+  --visited-background: #c59797;
+  --valid-color: #28a745;
+  --invalid-color: #dc3545;
+  --background-hover: rgba(0, 122, 204, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -53,6 +56,8 @@ html[data-theme="dark"] {
   --text-shadow: 2px 2px 4px rgba(246, 246, 246, 0.081);
   --form-border: #495057;
   --form-bg: #26282b;
+  --visited-color: #ef6767;
+  --visited-background: #ffdddd;
 }
 html[data-theme="light"] {
   --bg-color: #ffffff;
@@ -281,7 +286,7 @@ html[data-theme="light"] #theme-toggle img {
   max-width: 500px;
   height: auto;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--text-shadow);
   object-fit: cover;
   /* make room for the “border” */
   border: 6px solid transparent;
@@ -372,8 +377,8 @@ html[data-theme="light"] #theme-toggle img {
 }
 
 .links .text-links a:visited {
-  color: #b00000;
-  background: #ffdddd;
+  color: var(--visited-color);
+  background: var(--visited-background);
   border-radius: 4px;
 }
 /* Hover style: underline and swap to hover accent */
@@ -516,7 +521,7 @@ li > h3 {
   display: block;
   width: 25px;
   height: 3px;
-  background: var(--color-text, #333);
+  background: var(--text-color, #333);
   position: relative;
   transition: transform 0.3s ease;
 }
@@ -639,13 +644,13 @@ li > h3 {
 #resume a:hover {
   color: var(--accent-hover);
   text-decoration: underline;
-  background-color: rgba(0, 122, 204, 0.1);
+  background-color: var(--background-hover);
   border-radius: 4px;
 }
 
 #resume a:visited {
-  color: #b00000;
-  background: #ffdddd;
+  color: var(--visited-color);
+  background: var(--visited-background);
   border-radius: 4px;
 }
 
@@ -665,16 +670,15 @@ li > h3 {
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   gap: 1.5rem;
-  padding-inline: clamp(1rem, 4vw, 1.75rem); /* same gutter as other sections */
+  padding-inline: clamp(1rem, 4vw, 1.75rem);
   margin-top: 1.75rem;
 }
 
-/* make the “concepts” box span across */
 .skills-grid .concepts {
   grid-column: 1 / -1;
 }
 
-/* each card */
+/* individual cards */
 .skill-block {
   background: var(--surface-color);
   border: 2px solid var(--accent-color);
@@ -942,11 +946,11 @@ li > h3 {
 
 .feedback-form input:not(:placeholder-shown):invalid,
 .feedback-form textarea:not(:placeholder-shown):invalid {
-  border-color: #d00000; /* red */
+  border-color: var(--invalid-color);
 }
 .feedback-form input:not(:placeholder-shown):valid,
 .feedback-form textarea:not(:placeholder-shown):valid {
-  border-color: #2e9d3d; /* green */
+  border-color: var(--valid-color); /* green */
 }
 
 .feedback-form button[type="submit"] {
