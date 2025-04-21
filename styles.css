@@ -24,7 +24,7 @@
   );
   --bg-grad: linear-gradient(135deg, #766a6a 0%, #7a4e32 100%);
   --bg-grad-2: linear-gradient(135deg, #ac7abb 0%, #3d57ef 100%);
-  --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  --text-shadow-color: rgba(0, 0, 0, 0.3);
   font-family: "merriweather", sans-serif;
   --form-border: #c5cbd3;
   --form-bg: #f9fafb;
@@ -36,6 +36,7 @@
   --invalid-color: #dc3545;
   --background-hover: rgba(0, 122, 204, 0.1);
   --nav-background-color: #edeeee;
+  --nav-color: #333;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -54,12 +55,13 @@ html[data-theme="dark"] {
   --accent-color: #4dabf7;
   --accent-hover: #3d57ef;
   --accent-color-hover: #3d57ef;
-  --text-shadow: 2px 2px 4px rgba(246, 246, 246, 0.081);
+  --text-shadow-color: rgba(246, 246, 246, 0.081);
   --form-border: #495057;
   --form-bg: #26282b;
   --visited-color: #ef6767;
   --visited-background: #ffdddd;
   --nav-background-color: #2e2c2c;
+  --nav-color: #e0e0e0;
 }
 html[data-theme="light"] {
   --bg-color: #ffffff;
@@ -77,7 +79,7 @@ h1 {
   font-size: clamp(1.25rem, 6vw, 2.5rem);
   line-height: 1.1;
   background: var(--text-color);
-  text-shadow: var(--text-shadow);
+  text-shadow: 2px 2px 4px var(--text-shadow-color);
   margin: 0;
   font-family: "Montserrat", sans-serif;
   font-style: oblique 30deg;
@@ -138,7 +140,7 @@ section > h2 {
   padding: 1rem 2rem;
   background-color: var(--bg-color);
   color: var(--text-color);
-  box-shadow: var(--text-shadow);
+  box-shadow: 2px 2px 4px var(--text-shadow-color);
   font-family: "Montserrat", sans-serif;
   font-style: oblique 10deg;
   font-variant-caps: all-small-caps;
@@ -176,7 +178,7 @@ html[data-theme="dark"] .navbar .logo img {
 
 .nav-menu a {
   text-decoration: none;
-  color: var(--nav-color), #333;
+  color: var(--nav-color);
   font-weight: 800;
   font-size: clamp(1rem, 2vw, 1.5rem);
   position: relative;
@@ -284,7 +286,7 @@ html[data-theme="light"] #theme-toggle img {
   max-width: 500px;
   height: auto;
   border-radius: 50%;
-  box-shadow: var(--text-shadow);
+  box-shadow: 2px 2px 4px var(--text-shadow-color);
   object-fit: cover;
   /* make room for the “border” */
   border: 6px solid transparent;
@@ -572,7 +574,7 @@ li > h3 {
     flex-direction: column;
     width: clamp(100px, 60vw, 200px);
     padding: 1rem;
-    box-shadow: var(--text-shadow);
+    box-shadow: 2px 2px 4px var(--text-shadow-color);
     transform: translateX(100%);
     transition: transform 0.3s ease;
   }
