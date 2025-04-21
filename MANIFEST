@@ -5,8 +5,6 @@ CHOICES
 which one you chose using the letter provided in the spec. Separate the letters with a comma
 In some cases you will also need to tell us what you did)
 
----
-
 9a. I used both a gradient, and many instances of shadows to make elements on my page pop. Textwise I included both a text shadow and a gradient on my main header title.
 9b. I pretty much used relative units and the clamp() function everywhere in my CSS. Two such examples are:
 h1 { font-size: clamp(1.25rem, 6vw, 2.5rem); }
@@ -22,17 +20,21 @@ section > h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
 
 19. (Repeat)
 
+---
+
 JAVASCRIPT
 (Please tells us what the JavaScript does e.g. "click on the green button and it does the following...")
-
----
 
 My javascript sets the default appearance based on the user's default settings, either light mode or dark mode. If there is no preference it uses the system's prefered color. The javascript also has a toggle for light and dark mode, changing the color scheme displayed, stores the choice in the local storage, and displays the appropriate icon by changing the image source in the DOM.
 The javascript also toggles the difference visibility modes that the navigation bar has. It toggles between the full-width display, and the "hamburger" compressed mode. It does this by changing the class mode, which causes the css animation to occur.
 Lastly, my javascript also displays the current value of the feeback slider as the user changes it.
 
+---
+
 NOTES TO STAFF
 (If there is anything you need to tell us, please use the section below)
+
+Live version: https://mateusbehrend.vercel.app
 
 ---
 
