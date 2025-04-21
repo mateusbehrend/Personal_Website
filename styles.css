@@ -23,7 +23,7 @@
     #ff914d 100%
   );
   --bg-grad: linear-gradient(135deg, #766a6a 0%, #7a4e32 100%);
-  --bg-grad-2: linear-gradient(135deg, #6c80ee 0%, #3c54efd6 100%);
+  --bg-grad-2: linear-gradient(135deg, #ac7abb 0%, #3d57ef 100%);
   --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   font-family: "merriweather", sans-serif;
   --form-border: #c5cbd3;
@@ -35,6 +35,7 @@
   --valid-color: #28a745;
   --invalid-color: #dc3545;
   --background-hover: rgba(0, 122, 204, 0.1);
+  --nav-background-color: #edeeee;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -58,6 +59,7 @@ html[data-theme="dark"] {
   --form-bg: #26282b;
   --visited-color: #ef6767;
   --visited-background: #ffdddd;
+  --nav-background-color: #2e2c2c;
 }
 html[data-theme="light"] {
   --bg-color: #ffffff;
@@ -68,18 +70,13 @@ html[data-theme="light"] {
 h1 {
   align-items: center;
   justify-content: center;
-  min-height: 10vh; /* almost full‑screen */
+  min-height: 10vh;
   padding: 2rem;
   text-align: center;
   overflow: hidden;
   font-size: clamp(1.25rem, 6vw, 2.5rem);
   line-height: 1.1;
-
   background: var(--text-color);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
   text-shadow: var(--text-shadow);
   margin: 0;
   font-family: "Montserrat", sans-serif;
@@ -87,6 +84,14 @@ h1 {
   font-variant: small-caps;
   font-weight: 550;
   margin-top: 5rem;
+}
+
+@supports (-webkit-text-fill-color: transparent) {
+  h1 {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 }
 
 #titleName {
@@ -114,8 +119,6 @@ body {
 
 section > h2 {
   margin-left: clamp(1rem, 4vw, 1.75rem);
-
-  /* everything else you were already using… */
   font-family: "Montserrat", sans-serif;
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   margin-bottom: 1rem;
@@ -148,8 +151,8 @@ html[data-theme="dark"] .navbar .logo img {
 
 .navbar .logo img {
   height: clamp(32px, 3vw, 44px);
-  width: auto; /* preserve aspect ratio */
-  display: block; /* remove inline‑img descender gap */
+  width: auto;
+  display: block;
 }
 
 /* Nav menu */
@@ -164,7 +167,6 @@ html[data-theme="dark"] .navbar .logo img {
   margin-left: auto;
   padding-right: 1.15rem;
 
-  /* responsive spacing between items */
   gap: clamp(0.1rem, 0.75vw, 1rem);
 }
 
@@ -190,7 +192,7 @@ html[data-theme="dark"] .navbar .logo img {
 #theme-toggle img {
   height: clamp(32px, 3vw, 44px);
   width: auto; /* preserve aspect ratio */
-  display: block; /* remove inline‑img descender gap */
+  display: block;
   cursor: pointer;
   width: auto;
 }
@@ -225,7 +227,6 @@ html[data-theme="light"] #theme-toggle img {
 
 #about .about-me-text p,
 #about .about-me-text ul li {
-  /* was 1rem–1.125rem; now bigger */
   font-size: clamp(1.05rem, 2vw, 1.25rem);
   line-height: 1.6;
 }
@@ -243,9 +244,8 @@ html[data-theme="light"] #theme-toggle img {
   margin-bottom: 4rem;
 }
 
-/* 3) Text column (flexible) */
 #about .about-me-text {
-  flex: 1 1 300px; /* will grow to fill, shrink below 300px */
+  flex: 1 1 300px;
 }
 
 #about .about-me-text span {
@@ -259,7 +259,7 @@ html[data-theme="light"] #theme-toggle img {
 }
 .about-me-image {
   position: relative;
-  display: inline-block; /* shrink‑wrap to the img */
+  display: inline-block;
 }
 
 /* 2) Create the gradient “shadow” */
@@ -272,12 +272,10 @@ html[data-theme="light"] #theme-toggle img {
   bottom: 0;
   border-radius: 80%;
   background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
-
-  /* make it slightly bigger than the img */
   transform: scale(1.03);
   filter: blur(4px);
   z-index: -1; /* sit behind the image */
-  opacity: 0.75; /* soften the glow */
+  opacity: 0.75;
 }
 
 #about .about-me-image img {
@@ -322,9 +320,9 @@ html[data-theme="light"] #theme-toggle img {
 
 .links {
   display: flex;
-  flex-direction: column; /* stack ↓  icons then text */
-  align-items: center; /* push both rows to the right edge */
-  gap: 0.7rem; /* space between the two rows */
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
 }
 
 /* keep icon row as an inline list (no bullets) */
@@ -337,11 +335,10 @@ html[data-theme="light"] #theme-toggle img {
   margin-inline-end: clamp(0.75rem, 4vw, 2rem);
 }
 
-/* text‑link row simply follows your earlier styles */
 .links .text-links {
   margin: 0;
   font-size: clamp(0.9rem, 2vw, 1rem);
-  text-align: right; /* keep pipes snug‑right, too */
+  text-align: right;
 }
 
 .links .social-links a img {
@@ -381,7 +378,7 @@ html[data-theme="light"] #theme-toggle img {
   background: var(--visited-background);
   border-radius: 4px;
 }
-/* Hover style: underline and swap to hover accent */
+
 .links .text-links a:hover {
   color: var(--accent-hover);
   text-decoration: underline;
@@ -393,8 +390,8 @@ html[data-theme="light"] #theme-toggle img {
 }
 
 #experiences > *:not(h2) {
-  padding-left: 1rem; /* smaller left gutter */
-  padding-right: 2rem; /* keep your right gutter as before */
+  padding-left: 1rem;
+  padding-right: 2rem;
   box-sizing: border-box;
   padding-inline: clamp(1rem, 4vw, 1.75rem);
 }
@@ -570,11 +567,7 @@ li > h3 {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: color-mix(
-      in srgb,
-      var(--bg-color) 92%,
-      var(--text-color) 8%
-    );
+    background-color: var(--nav-background-color);
     backdrop-filter: blur(4px);
     flex-direction: column;
     width: clamp(100px, 60vw, 200px);
@@ -700,7 +693,7 @@ li > h3 {
 
 .skill-block ul {
   list-style: "✔  ";
-  padding-left: 1.1rem; /* room for custom tick */
+  padding-left: 1.1rem;
   margin: 0;
 }
 .skill-block li {
@@ -708,8 +701,7 @@ li > h3 {
   font-size: 0.95rem;
   line-height: 1.45;
 }
-
-/* —— responsive tweaks —— */
+/* responsiveness */
 @media (max-width: 860px) {
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -723,29 +715,20 @@ li > h3 {
     grid-column: auto;
   }
 }
+
+/* add for smaller devices */
 @media (max-width: 380px) {
-  /* A. remove the big side‑gutters that force a scroll‑bar */
   #skills,
   #skills > *:not(h2) {
-    /* keeps your h2 rule intact             */
-    padding-inline: 0.5rem; /* was clamp(1rem,4vw,1.75rem)           */
+    padding-inline: 0.5rem;
   }
-
-  /* B. force a single‑column grid & tighten the gap                    */
   .skills-grid {
-    grid-template-columns: 1fr; /* 1 card per row                        */
+    grid-template-columns: 1fr;
     gap: 0.75rem;
   }
-
-  /* C. slimmer cards                                                   */
   .skill-block {
-    padding: 0.9rem 1rem; /* was 1.25rem 1.5rem                    */
-    font-size: 0.9rem; /* optional: slightly smaller text       */
-  }
-
-  /* D. let long words wrap instead of widening the card                */
-  .skill-block li {
-    word-break: break-word; /* cuts very long tokens like “Micro‑…”  */
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
   }
 }
 
@@ -784,8 +767,8 @@ li > h3 {
   transform: translateY(-4px);
 }
 
-.project-content,            /* helper for featured */
-  .project:not(.project--featured) {
+.project-content,
+.project:not(.project--featured) {
   padding: 1rem 1.25rem;
 }
 
@@ -811,7 +794,7 @@ li > h3 {
   color: var(--accent-hover);
 }
 .project--featured.scripts {
-  flex-direction: column; /* stack header + list */
+  flex-direction: column;
   padding: 1.25rem 1.5rem;
 }
 
@@ -863,7 +846,6 @@ li > h3 {
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
   }
-  /* let featured span both columns but only one row now */
   .project--featured {
     grid-column: 1 / -1;
     grid-row: auto;
@@ -884,7 +866,7 @@ li > h3 {
 }
 
 .feedback-form {
-  max-width: 600px; /* stops it from hitting the edge */
+  max-width: 600px;
   margin: 2rem auto; /* centers & adds vertical space */
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
@@ -892,7 +874,7 @@ li > h3 {
 .feedback-form fieldset {
   border: 2px solid var(--accent-color);
   border-radius: var(--form-radius);
-  padding: 1.5rem; /* keeps inputs off the edges */
+  padding: 1.5rem;
   background: var(--form-bg);
 }
 
@@ -931,7 +913,6 @@ li > h3 {
   margin-inline: 0.5rem;
 }
 
-/* slider inherits accent colour */
 .feedback-form input[type="range"] {
   accent-color: var(--accent-color);
 }
@@ -941,8 +922,6 @@ li > h3 {
   outline: none;
   border-color: var(--accent-color);
 }
-
-/* ---- live HTML‑5 validation feedback ---- */
 
 .feedback-form input:not(:placeholder-shown):invalid,
 .feedback-form textarea:not(:placeholder-shown):invalid {
@@ -972,7 +951,7 @@ li > h3 {
 
 @media (max-width: 480px) {
   .feedback-grid {
-    grid-template-columns: 1fr; /* single column */
+    grid-template-columns: 1fr;
   }
 }
 
